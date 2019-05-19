@@ -15,12 +15,16 @@ If your language provides a method in the standard library that does this look-u
 #include <gtest/gtest.h>
 
 bool isLeapYear(int year) {
-    if (year % 4 == 0) {
-        return true;
+    bool result = false;
+
+    if (year % 4 == 0)
+    {
+        result = true;
     }
-    return false;
+
+    return result;
 }
 
-TEST(LeapYear, leapYear2000ReturnsYes) {
+TEST(LeapYear, ifYear2000ReturnsTrue) {
     ASSERT_TRUE(isLeapYear(2000));
 }
