@@ -19,7 +19,11 @@ bool isLeapYear(int year) {
 
     if (year % 4 == 0)
     {
-        result = true;
+        if (year % 100 == 0 && year % 400 != 0) {
+            result = false;
+        } else {
+            result = true;
+        }
     }
 
     return result;
@@ -32,3 +36,4 @@ TEST(LeapYear, ifYear2000ReturnsTrue) {
 TEST(LeapYear, ifYear1900ReturnsFalse) {
     ASSERT_FALSE(isLeapYear(1900));
 }
+
