@@ -40,3 +40,10 @@ TEST(LeapYear, ifYear1900ReturnsFalse) {
     ASSERT_FALSE(isLeapYear(1900));
 }
 
+TEST(LeapYear, ifYear1999ReturnsFalse) {
+    ASSERT_FALSE(isLeapYear(1999));
+}
+
+TEST(LeapYear, ifYear1996ReturnsTrue) {
+    ASSERT_TRUE(isLeapYear(1996));
+}
