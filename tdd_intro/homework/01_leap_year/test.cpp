@@ -28,3 +28,7 @@ bool isLeapYear(int year) {
 TEST(LeapYear, ifYear2000ReturnsTrue) {
     ASSERT_TRUE(isLeapYear(2000));
 }
+
+TEST(LeapYear, ifYear1900ReturnsFalse) {
+    ASSERT_FALSE(isLeapYear(1900));
+}
