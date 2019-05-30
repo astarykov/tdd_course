@@ -13,3 +13,37 @@ If your language provides a method in the standard library that does this look-u
 */
 
 #include <gtest/gtest.h>
+
+bool isLeapYear(int year) {
+    bool result = false;
+
+    if (year % 4 == 0)
+    {
+        if (year % 100 == 0 && year % 400 != 0)
+        {
+            result = false;
+        }
+        else
+        {
+            result = true;
+        }
+    }
+
+    return result;
+}
+
+TEST(LeapYear, ifYear2000ReturnsTrue) {
+    ASSERT_TRUE(isLeapYear(2000));
+}
+
+TEST(LeapYear, ifYear1900ReturnsFalse) {
+    ASSERT_FALSE(isLeapYear(1900));
+}
+
+TEST(LeapYear, ifYear1999ReturnsFalse) {
+    ASSERT_FALSE(isLeapYear(1999));
+}
+
+TEST(LeapYear, ifYear1996ReturnsTrue) {
+    ASSERT_TRUE(isLeapYear(1996));
+}
