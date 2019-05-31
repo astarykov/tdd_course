@@ -31,3 +31,7 @@ TEST(TernaryNumbers, emptyStringReturnsZeroValue) {
 TEST(TernaryNumbers, 1Returns1) {
     ASSERT_EQ(getTernaryNumberAsDecimalValue("1"), 1);
 }
+
+TEST(TernaryNumbers, 102Returns11) {
+    ASSERT_EQ(getTernaryNumberAsDecimalValue("102"), 11);
+}
