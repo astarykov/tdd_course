@@ -21,9 +21,9 @@ If your language provides a method in the standard library to perform the conver
 int getTernaryNumberAsDecimalValue(std::string string) {
     int result = 0;
     if (string.find_first_not_of("012") == std::string::npos) {
-        for (int i = 0; i < string.length(); i++) {
+        for (size_t i = 0; i < string.length(); i++) {
             int number = string[i] - '0';
-            result = result + number * pow(3,string.length() - 1 - i);
+            result = result + number * static_cast<int>(pow(3, string.length() - 1 - i));
         }
         return result;
     }
