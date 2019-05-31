@@ -41,3 +41,7 @@ TEST(TernaryNumbers, 1Returns1) {
 TEST(TernaryNumbers, 102Returns11) {
     ASSERT_EQ(getTernaryNumberAsDecimalValue("102"), 11);
 }
+
+TEST(TernaryNumbers, InvalidStringReturns0) {
+    ASSERT_EQ(getTernaryNumberAsDecimalValue("ddsfdsfsdfdsfds"), 0);
+}
