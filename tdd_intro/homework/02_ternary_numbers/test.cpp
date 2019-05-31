@@ -18,16 +18,16 @@ If your language provides a method in the standard library to perform the conver
 */
 
 
-int getTernaryNumberValue(std::string string) {
+int getTernaryNumberAsDecimalValue(std::string string) {
     if (string == "1")
         return 1;
     return 0;
 }
 
 TEST(TernaryNumbers, emptyStringReturnsZeroValue) {
-    ASSERT_EQ(getTernaryNumberValue(""), 0);
+    ASSERT_EQ(getTernaryNumberAsDecimalValue(""), 0);
 }
 
 TEST(TernaryNumbers, 1Returns1) {
-    ASSERT_EQ(getTernaryNumberValue("1"), 1);
+    ASSERT_EQ(getTernaryNumberAsDecimalValue("1"), 1);
 }
