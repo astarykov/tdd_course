@@ -25,3 +25,7 @@ int getTernaryNumberValue(std::string string) {
 TEST(TernaryNumbers, emptyStringReturnsZeroValue) {
     ASSERT_EQ(getTernaryNumberValue(""), 0);
 }
+
+TEST(TernaryNumbers, 1Returns1) {
+    ASSERT_EQ(getTernaryNumberValue("1"), 1);
+}
