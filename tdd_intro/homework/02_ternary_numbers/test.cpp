@@ -19,6 +19,8 @@ If your language provides a method in the standard library to perform the conver
 
 
 int getTernaryNumberValue(std::string string) {
+    if (string == "1")
+        return 1;
     return 0;
 }
 
