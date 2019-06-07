@@ -199,6 +199,9 @@ const Display s_display123456789 = { "    _  _     _  _  _  _  _ ",
 
 
 int getDigitalFromOCR(Digit number) {
+    if (number.lines[0] == "   " && number.lines[1] == "  |" && number.lines[2] == "  |") {
+        return 1;
+    }
     return 0;
 }
 
