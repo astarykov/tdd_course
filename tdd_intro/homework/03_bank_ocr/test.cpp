@@ -208,3 +208,7 @@ int getDigitalFromOCR(Digit number) {
 TEST(OCR_BANK, test_s_digit1_Returns1) {
     ASSERT_EQ(getDigitalFromOCR(s_digit1), 1);
 }
+
+TEST(OCR_BANK, test_s_digit7_Returns7) {
+    ASSERT_EQ(getDigitalFromOCR(s_digit7), 7);
+}
