@@ -217,3 +217,7 @@ TEST(OCR_BANK, test_s_digit1_Returns1) {
 TEST(OCR_BANK, test_s_digit7_Returns7) {
     ASSERT_EQ(getDigitalFromOCR(s_digit7), 7);
 }
+
+TEST(OCR_BANK, test_s_digit3_Returns3) {
+    ASSERT_EQ(getDigitalFromOCR(s_digit3), 3);
+}
