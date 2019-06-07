@@ -205,6 +205,6 @@ int getDigitalFromOCR(Digit number) {
     return 0;
 }
 
-TEST(OCR_BANK, testOneReturns1) {
+TEST(OCR_BANK, test_s_digit1_Returns1) {
     ASSERT_EQ(getDigitalFromOCR(s_digit1), 1);
 }
