@@ -215,7 +215,7 @@ int getDigitalFromOCR(const Digit number) {
             }
         }
     }
-    return 0;
+    return -1;
 }
 
 TEST(OCR_BANK, test_s_digit1_Returns1) {
@@ -252,4 +252,8 @@ TEST(OCR_BANK, test_s_digit8_Returns8) {
 
 TEST(OCR_BANK, test_s_digit9_Returns9) {
     ASSERT_EQ(getDigitalFromOCR(s_digit9), 9);
+}
+
+TEST(OCR_BANK, test_s_digit0_Returns0) {
+    ASSERT_EQ(getDigitalFromOCR(s_digit0), 0);
 }
