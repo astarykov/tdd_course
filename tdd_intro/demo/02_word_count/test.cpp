@@ -39,3 +39,8 @@ TEST(WordCount, emptyStringReturnsEmptyDict) {
     std::map <std::string, int> res = {};
     ASSERT_EQ(getWordsCount(" "), res);
 }
+
+TEST(WordCount, hiStringReturnsOneWordDict) {
+    std::map <std::string, int> res = {{"hi", 1}};
+    ASSERT_EQ(getWordsCount("hi"), res);
+}
