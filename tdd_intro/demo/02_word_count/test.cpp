@@ -35,9 +35,13 @@ std::map<std::string, int> getWordsCount(std::string line) {
         std::istringstream iss(line);
         std::vector<std::string> results((std::istream_iterator<std::string>(iss)),
                                          std::istream_iterator<std::string>());
-
-        for (auto & element : results) {
-            result.insert({element, 1});
+        for (auto & element : results)
+        {
+            if (result.count(element)) {
+                result[element]++;
+            } else {
+                result.insert({element, 1});
+            }
         }
     }
     return result;
