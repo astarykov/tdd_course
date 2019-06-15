@@ -31,6 +31,9 @@ such: 1
 
 std::map<std::string, int> getWordsCount(std::string line) {
     std::map<std::string, int> result = {};
+    if (!line.empty() && line != " ") {
+        result.insert({line, 1});
+    }
     return result;
 }
 
