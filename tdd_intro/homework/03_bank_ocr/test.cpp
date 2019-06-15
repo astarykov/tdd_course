@@ -229,3 +229,27 @@ TEST(OCR_BANK, test_s_digit7_Returns7) {
 TEST(OCR_BANK, test_s_digit3_Returns3) {
     ASSERT_EQ(getDigitalFromOCR(s_digit3), 3);
 }
+
+TEST(OCR_BANK, test_s_digit4_Returns4) {
+    ASSERT_EQ(getDigitalFromOCR(s_digit4), 4);
+}
+
+TEST(OCR_BANK, test_s_digit5_Returns5) {
+    ASSERT_EQ(getDigitalFromOCR(s_digit5), 5);
+}
+
+TEST(OCR_BANK, test_s_digit2_Returns2) {
+    ASSERT_EQ(getDigitalFromOCR(s_digit2), 2);
+}
+
+TEST(OCR_BANK, test_s_digit6_Returns6) {
+    ASSERT_EQ(getDigitalFromOCR(s_digit6), 6);
+}
+
+TEST(OCR_BANK, test_s_digit8_Returns8) {
+    ASSERT_EQ(getDigitalFromOCR(s_digit8), 8);
+}
+
+TEST(OCR_BANK, test_s_digit9_Returns9) {
+    ASSERT_EQ(getDigitalFromOCR(s_digit9), 9);
+}
