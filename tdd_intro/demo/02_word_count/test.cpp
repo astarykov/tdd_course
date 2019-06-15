@@ -26,3 +26,15 @@ such: 1
     5. "one one one two two" = {{"one", 3}, {"two", 1}}
     6. "So, it's up to you and it's up to me" = {{"So", 1}, {"it's", 2}, {"up", 2}, {"to", 2}, {"you", 1}, {"and", 1}, {"me", 1}}
 */
+
+
+
+std::map<std::string, int> getWordsCount(std::string line) {
+    return {};
+}
+
+
+TEST(WordCount, emptyStringReturnsEmptyDict) {
+    std::map <std::string, int> res = {};
+    ASSERT_EQ(getWordsCount(" "), res);
+}
