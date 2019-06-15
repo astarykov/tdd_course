@@ -67,3 +67,8 @@ TEST(WordCount, 3SameWordsInStringReturnsOneWordDict) {
     std::map <std::string, int> res = {{"hi", 3}};
     ASSERT_EQ(getWordsCount("hi hi hi"), res);
 }
+
+TEST(WordCount, LonglineWordsInStringReturnsSevenWordDict) {
+    std::map <std::string, int> res = {{"So", 1}, {"it's", 2}, {"up", 2}, {"to", 2}, {"you", 1}, {"and", 1}, {"me", 1}};
+    ASSERT_EQ(getWordsCount("So, it's up to you and it's up to me"), res);
+}
