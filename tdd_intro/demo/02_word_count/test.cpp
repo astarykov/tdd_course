@@ -30,7 +30,8 @@ such: 1
 
 
 std::map<std::string, int> getWordsCount(std::string line) {
-    return {};
+    std::map<std::string, int> result = {};
+    return result;
 }
 
 
