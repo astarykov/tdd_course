@@ -58,3 +58,8 @@ TEST(WordCount, 2WordsInStringReturnsTwoWordDict) {
     std::map <std::string, int> res = {{"hi", 1}, {"no", 1}};
     ASSERT_EQ(getWordsCount("hi no "), res);
 }
+
+TEST(WordCount, 3SameWordsInStringReturnsOneWordDict) {
+    std::map <std::string, int> res = {{"hi", 3}};
+    ASSERT_EQ(getWordsCount("hi hi hi"), res);
+}
