@@ -85,3 +85,8 @@ TEST(WordCount, 3and2SameWordsInStringReturnsTwoWordDict) {
     std::map <std::string, int> res = {{"one", 3}, {"two", 2}};
     ASSERT_EQ(getWordsCount("one one one two two"), res);
 }
+
+TEST(WordCount, 3and2SameWordsWithAllPunctualSymbolsInStringReturnsTwoWordDict) {
+    std::map <std::string, int> res = {{"one", 3}, {"two", 2}};
+    ASSERT_EQ(getWordsCount("one? !one, one: ;two , two ?"), res);
+}
