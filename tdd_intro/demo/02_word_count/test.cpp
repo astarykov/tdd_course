@@ -17,3 +17,12 @@ such: 1
 #include <string>
 #include <map>
 
+/*
+    Tets cases:
+    1. " " = {}
+    2. "hi" = {{"hi", 1}}
+    3. "hi no " = {{"hi", 1}, {"no", 1}}
+    4. "hi hi hi" = {{"hi", 3}}
+    5. "one one one two two" = {{"one", 3}, {"two", 1}}
+    6. "So, it's up to you and it's up to me" = {{"So", 1}, {"it's", 2}, {"up", 2}, {"to", 2}, {"you", 1}, {"and", 1}, {"me", 1}}
+*/
