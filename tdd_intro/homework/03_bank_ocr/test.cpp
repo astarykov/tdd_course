@@ -197,15 +197,23 @@ const Display s_display123456789 = { "    _  _     _  _  _  _  _ ",
 };
 
 
+static std::map <int,const Digit> dict = {{0, s_digit0},{1, s_digit1},{2, s_digit2},{3, s_digit3},{4, s_digit4},{5, s_digit5},{6, s_digit6},{7, s_digit7},{8, s_digit8},{9, s_digit9}};
 
-int getDigitalFromOCR(Digit number) {
-    if (number.lines[1] == "  |" && number.lines[2] == "  |") {
-        if (number.lines[0] == "   ") {
-            return 1;
-        } else if (number.lines[0] == " _ ") {
-            return 7;
+int getDigitalFromOCR(const Digit number) {
+    int res = 0;
+    for (auto const& x : dict) {
+        for (int i=0;  i< x.second.lines->size(); i++)
+        {
+            if (x.second.lines[i] != number.lines[i]) {
+                res = 0;
+                break;
+            } else {
+                res += 1;
+            }
+            if (res == 3) {
+                return x.first;
+            }
         }
-        return 0;
     }
     return 0;
 }
