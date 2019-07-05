@@ -46,6 +46,7 @@ IMPORTANT:
 
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
+#include <cmath>
 
 class IWeatherServer
 {
@@ -65,4 +66,17 @@ public:
     virtual double GetMaximumTemperature(IWeatherServer& server, const std::string& date) = 0;
     virtual double GetAverageWindDirection(IWeatherServer& server, const std::string& date) = 0;
     virtual double GetMaximumWindSpeed(IWeatherServer& server, const std::string& date) = 0;
+};
+
+struct Weather
+{
+    short temperature = 0;
+    unsigned short windDirection = 0;
+    double windSpeed = 0;
+    bool operator==(const Weather& right)
+    {
+        return temperature == right.temperature &&
+               windDirection == right.windDirection &&
+               std::abs(windSpeed - right.windSpeed) < 0.01;
+    }
 };
