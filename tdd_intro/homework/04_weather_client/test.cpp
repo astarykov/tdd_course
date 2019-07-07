@@ -150,8 +150,16 @@ public:
 
         return windDirection / serverResults.size();
     }
-    double GetMaximumWindSpeed(IWeatherServer& __unused server, const __unused std::string& date)
-    {return 0.0;}
+    double GetMaximumWindSpeed(IWeatherServer& server, const std::string& date)
+    {
+        std::vector<Weather> serverResults = this->GetWeatherObjects(server, date);
+        double maxSpeed = serverResults[0].windSpeed;
+        for (int i = 0; i < int(serverResults.size()); i++) {
+            maxSpeed = maxSpeed < serverResults[i].windSpeed ? serverResults[i].windSpeed : maxSpeed ;
+        }
+
+        return maxSpeed;
+    }
 
 private:
     const std::vector<std::string> availableHours = { "03:00", "09:00", "15:00", "21:00" };
