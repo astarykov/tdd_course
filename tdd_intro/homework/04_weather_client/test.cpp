@@ -120,7 +120,7 @@ public:
 
         return totalTemp / serverResults.size();
     }
-    double GetMinimumTemperature(IWeatherServer& __unused server, const __unused std::string& date)
+    double GetMinimumTemperature(IWeatherServer& server, const std::string& date)
     {
         std::vector<Weather> serverResults = this->GetWeatherObjects(server, date);
         double minTemp = serverResults[0].temperature;
@@ -130,7 +130,7 @@ public:
 
         return minTemp;
     }
-    double GetMaximumTemperature(IWeatherServer& __unused server, const __unused std::string& date)
+    double GetMaximumTemperature(IWeatherServer& server, const std::string& date)
     {
         std::vector<Weather> serverResults = this->GetWeatherObjects(server, date);
         double maxTemp = serverResults[0].temperature;
