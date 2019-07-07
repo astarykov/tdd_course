@@ -235,3 +235,9 @@ TEST(weatherClient, getAverageWindDirectionForProperDate) {
     WeatherClient client = WeatherClient();
     ASSERT_EQ(client.GetAverageWindDirection(server, "02.09.2018"), 229);
 }
+
+TEST(weatherClient, getAverageWindDirectionForInProperDate) {
+    MockWeatherServer server = MockWeatherServer();
+    WeatherClient client = WeatherClient();
+    ASSERT_EQ(client.GetAverageWindDirection(server, "----"), 0.0);
+}
