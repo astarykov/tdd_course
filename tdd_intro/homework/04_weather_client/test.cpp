@@ -219,3 +219,11 @@ TEST(weatherClient, getMaximumTemperatureForInProperDate) {
     WeatherClient client = WeatherClient();
     ASSERT_EQ(client.GetMaximumTemperature(server, "31.08"), 0.0);
 }
+
+// Get Avarage Wind Direction
+
+TEST(weatherClient, getAverageWindDirectionForProperDate) {
+    MockWeatherServer server = MockWeatherServer();
+    WeatherClient client = WeatherClient();
+    ASSERT_EQ(client.GetAverageWindDirection(server, "02.09.2018"), 229);
+}
