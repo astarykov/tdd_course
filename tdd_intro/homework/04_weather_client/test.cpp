@@ -131,7 +131,15 @@ public:
         return minTemp;
     }
     double GetMaximumTemperature(IWeatherServer& __unused server, const __unused std::string& date)
-    {return 0.0;}
+    {
+        std::vector<Weather> serverResults = this->GetWeatherObjects(server, date);
+        double maxTemp = serverResults[0].temperature;
+        for (int i = 0; i < int(serverResults.size()); i++) {
+             maxTemp = maxTemp < serverResults[i].temperature ? serverResults[i].temperature : maxTemp ;
+        }
+
+        return maxTemp;
+    }
     double GetAverageWindDirection(IWeatherServer& __unused server, const __unused std::string& date)
     {return 0.0;}
     double GetMaximumWindSpeed(IWeatherServer& __unused server, const __unused std::string& date)
