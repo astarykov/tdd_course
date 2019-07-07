@@ -47,6 +47,7 @@ IMPORTANT:
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 #include <cmath>
+#include <string>
 
 class IWeatherServer
 {
@@ -109,7 +110,25 @@ class WeatherClient : IWeatherClient
 {
 public:
     double GetAverageTemperature(IWeatherServer& __unused server, const __unused std::string& date)
-    {return 0.0;}
+    {
+        std::vector<Weather> serverResults;
+        double totalTemp = 0.0;
+        for(auto time : this->availableHours)
+        {
+            std::string response = server.GetWeather(date + ';' + time);
+            std::replace(response.begin(), response.end(), ';', ' ');
+            std::istringstream iss(response);
+            Weather weather;
+            iss >> weather.temperature >> weather.windDirection >> weather.windSpeed;
+            serverResults.push_back(weather);
+        }
+
+        for (int i = 0; i < int(serverResults.size()); i++) {
+            totalTemp = totalTemp + serverResults[i].temperature;
+        }
+
+        return totalTemp / serverResults.size();
+    }
     double GetMinimumTemperature(IWeatherServer& __unused server, const __unused std::string& date)
     {return 0.0;}
     double GetMaximumTemperature(IWeatherServer& __unused server, const __unused std::string& date)
@@ -118,6 +137,10 @@ public:
     {return 0.0;}
     double GetMaximumWindSpeed(IWeatherServer& __unused server, const __unused std::string& date)
     {return 0.0;}
+
+private:
+    const std::vector<std::string> availableHours = { "03:00", "09:00", "15:00", "21:00" };
+
 };
 
 // GetWeather with proper request
