@@ -86,43 +86,34 @@ class MockWeatherServer : public IWeatherServer
 {
 public:
     std::string GetWeather(const std::string& request) {
-       std::map<std::string, std::string> weatherMap = {{"31.08.2018;03:00", "20;181;5.1"},
-        {"31.08.2018;09:00", "23;204;4.9"},
-        {"31.08.2018;15:00", "33;193;4.3"},
-        {"31.08.2018;21:00", "26;179;4.5"},
-
-        {"01.09.2018;03:00", "19;176;4.2"},
-        {"01.09.2018;09:00", "22;131;4.1"},
-        {"01.09.2018;15:00", "31;109;4.0"},
-        {"01.09.2018;21:00", "24;127;4.1"},
-
-        {"02.09.2018;03:00", "21;158;3.8"},
-        {"02.09.2018;09:00", "25;201;3.5"},
-        {"02.09.2018;15:00", "34;258;3.7"},
-        {"02.09.2018;21:00", "27;299;4.0"}};
-
-        return weatherMap[request];
+        return this->weatherMap[request];
     }
+
+private:
+    std::map<std::string, std::string> weatherMap = {{"31.08.2018;03:00", "20;181;5.1"},
+     {"31.08.2018;09:00", "23;204;4.9"},
+     {"31.08.2018;15:00", "33;193;4.3"},
+     {"31.08.2018;21:00", "26;179;4.5"},
+
+     {"01.09.2018;03:00", "19;176;4.2"},
+     {"01.09.2018;09:00", "22;131;4.1"},
+     {"01.09.2018;15:00", "31;109;4.0"},
+     {"01.09.2018;21:00", "24;127;4.1"},
+
+     {"02.09.2018;03:00", "21;158;3.8"},
+     {"02.09.2018;09:00", "25;201;3.5"},
+     {"02.09.2018;15:00", "34;258;3.7"},
+     {"02.09.2018;21:00", "27;299;4.0"}};
 };
 
 
 class WeatherClient : IWeatherClient
 {
 public:
-    double GetAverageTemperature(IWeatherServer& __unused server, const __unused std::string& date)
+    double GetAverageTemperature(IWeatherServer& server, const std::string& date)
     {
-        std::vector<Weather> serverResults;
+        std::vector<Weather> serverResults = this->GetWeatherObjects(server, date);
         double totalTemp = 0.0;
-        for(auto time : this->availableHours)
-        {
-            std::string response = server.GetWeather(date + ';' + time);
-            std::replace(response.begin(), response.end(), ';', ' ');
-            std::istringstream iss(response);
-            Weather weather;
-            iss >> weather.temperature >> weather.windDirection >> weather.windSpeed;
-            serverResults.push_back(weather);
-        }
-
         for (int i = 0; i < int(serverResults.size()); i++) {
             totalTemp = totalTemp + serverResults[i].temperature;
         }
@@ -140,6 +131,20 @@ public:
 
 private:
     const std::vector<std::string> availableHours = { "03:00", "09:00", "15:00", "21:00" };
+
+    std::vector<Weather> GetWeatherObjects(IWeatherServer& server,std::string date) {
+        std::vector<Weather> serverResults;
+        for(auto time : this->availableHours)
+        {
+            Weather weather;
+            std::string response = server.GetWeather(date + ';' + time);
+            std::replace(response.begin(), response.end(), ';', ' ');
+            std::istringstream iss(response);
+            iss >> weather.temperature >> weather.windDirection >> weather.windSpeed;
+            serverResults.push_back(weather);
+        }
+        return serverResults;
+    }
 
 };
 
