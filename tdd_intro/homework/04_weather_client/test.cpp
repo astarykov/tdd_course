@@ -213,3 +213,9 @@ TEST(weatherClient, getMaximumTemperatureForProperDate) {
     WeatherClient client = WeatherClient();
     ASSERT_EQ(client.GetMaximumTemperature(server, "31.08.2018"), 33);
 }
+
+TEST(weatherClient, getMaximumTemperatureForInProperDate) {
+    MockWeatherServer server = MockWeatherServer();
+    WeatherClient client = WeatherClient();
+    ASSERT_EQ(client.GetMaximumTemperature(server, "31.08"), 0.0);
+}
