@@ -119,3 +119,9 @@ public:
     double GetMaximumWindSpeed(IWeatherServer& __unused server, const __unused std::string& date)
     {return 0.0;}
 };
+
+// GetWeather with proper request
+TEST(getWeather, getWeatherCorrectRequest) {
+    MockWeatherServer server = MockWeatherServer();
+    ASSERT_EQ(server.GetWeather("31.08.2018;09:00"), "23;204;4.9");
+}
