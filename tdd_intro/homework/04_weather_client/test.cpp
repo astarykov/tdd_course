@@ -181,5 +181,5 @@ TEST(weatherClient, getAvarageTemperatureForInProperDate) {
 TEST(weatherClient, getMinimumTemperatureForProperDate) {
     MockWeatherServer server = MockWeatherServer();
     WeatherClient client = WeatherClient();
-    ASSERT_EQ(client.GetAverageTemperature(server, "01.09.2018"), 19);
+    ASSERT_EQ(client.GetMinimumTemperature(server, "01.09.2018"), 19);
 }
