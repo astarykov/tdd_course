@@ -191,3 +191,9 @@ TEST(weatherClient, getMinimumTemperatureForProperDate) {
     WeatherClient client = WeatherClient();
     ASSERT_EQ(client.GetMinimumTemperature(server, "01.09.2018"), 19);
 }
+
+TEST(weatherClient, getMinimumTemperatureForInProperDate) {
+    MockWeatherServer server = MockWeatherServer();
+    WeatherClient client = WeatherClient();
+    ASSERT_EQ(client.GetMinimumTemperature(server, "asdasd"), 0.0);
+}
