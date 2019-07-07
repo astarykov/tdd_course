@@ -125,3 +125,10 @@ TEST(getWeather, getWeatherCorrectRequest) {
     MockWeatherServer server = MockWeatherServer();
     ASSERT_EQ(server.GetWeather("31.08.2018;09:00"), "23;204;4.9");
 }
+
+// GetWeather with incorrect request
+//* Server returns empty string if request is invalid.
+TEST(getWeather, getWeatherIncorrectRequest) {
+    MockWeatherServer server = MockWeatherServer();
+    ASSERT_EQ(server.GetWeather("fff"), "");
+}
