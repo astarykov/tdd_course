@@ -252,7 +252,7 @@ TEST(weatherClient, getAverageWindDirectionForInProperDate) {
 
 // Get Maximum Wind Speed
 
-TEST(weatherClient, getMaximumWindSpeedForInProperDate) {
+TEST(weatherClient, getMaximumWindSpeedForProperDate) {
     MockWeatherServer server = MockWeatherServer();
     WeatherClient client = WeatherClient();
     ASSERT_EQ(client.GetMaximumWindSpeed(server, "31.08.2018"), 5.1);
