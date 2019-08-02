@@ -29,4 +29,46 @@ public:
     virtual void AddMilkFoam(int gram) = 0;
     virtual void AddChocolate(int gram) = 0;
     virtual void AddCream(int gram) = 0;
+
+
+};
+
+class SourceOfIngredientsMock: public ISourceOfIngredients {
+    public:
+        MOCK_METHOD1(SetCupSize, void(int));
+        MOCK_METHOD2(AddWater, void(int, int));
+        MOCK_METHOD1(AddSugar, void(int));
+        MOCK_METHOD1(AddCoffee, void(int));
+        MOCK_METHOD1(AddMilk, void(int));
+        MOCK_METHOD1(AddMilkFoam, void(int));
+        MOCK_METHOD1(AddChocolate, void(int));
+        MOCK_METHOD1(AddCream, void(int));
+};
+
+class CofeeMachine {
+    public:
+    CofeeMachine(ISourceOfIngredients *ingredientSource) {
+        _ingredientSource = ingredientSource;
+    }
+
+    void makeAmericano(int capacity) {
+        _ingredientSource->SetCupSize(capacity);
+    }
+
+    void makeCapuchino(int capacity) {
+        _ingredientSource->SetCupSize(capacity);
+    }
+
+    void makeLatte(int capacity) {
+        _ingredientSource->SetCupSize(capacity);
+    }
+
+    void makeMarochino(int capacity) {
+        _ingredientSource->SetCupSize(capacity);
+    }
+
+
+
+    private:
+        ISourceOfIngredients *_ingredientSource;
 };
