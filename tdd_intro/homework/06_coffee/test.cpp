@@ -95,3 +95,14 @@ TEST(Coffee, makeAmericanoOfSizeBig) {
     EXPECT_CALL(source, AddCoffee(70)).Times(1);
     machine.makeAmericano(140);
 }
+
+TEST(Coffee, makeCapuchinoOfSizeSmall) {
+    SourceOfIngredientsMock source;
+    CofeeMachine machine(&source);
+
+    EXPECT_CALL(source, SetCupSize(100)).Times(1);
+    EXPECT_CALL(source, AddWater(100/3, 80)).Times(1);
+    EXPECT_CALL(source, AddCoffee(100/3)).Times(1);
+    EXPECT_CALL(source, AddMilk(100/3)).Times(1);
+    machine.makeCapuchino(100);
+}
