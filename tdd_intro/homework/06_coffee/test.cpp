@@ -72,3 +72,14 @@ class CofeeMachine {
     private:
         ISourceOfIngredients *_ingredientSource;
 };
+
+
+TEST(Coffee, makeAmericanoOfSizeSmall) {
+    SourceOfIngredientsMock source;
+    CofeeMachine machine(&source);
+
+    EXPECT_CALL(source, SetCupSize(100)).Times(1);
+    EXPECT_CALL(source, AddWater(50, 60)).Times(1);
+    EXPECT_CALL(source, AddCoffee(50)).Times(1);
+    machine.makeAmericano(100);
+}
