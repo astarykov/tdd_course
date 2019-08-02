@@ -53,6 +53,8 @@ class CofeeMachine {
 
     void makeAmericano(int capacity) {
         _ingredientSource->SetCupSize(capacity);
+        _ingredientSource->AddWater(capacity/2, 60);
+        _ingredientSource->AddCoffee(capacity/2);
     }
 
     void makeCapuchino(int capacity) {
